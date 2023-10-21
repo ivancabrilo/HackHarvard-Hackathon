@@ -78,3 +78,34 @@ User Input: I am strong guy
 Bot Output: That's wonderful! Being physically strong can have numerous benefits for your overall health and well-being. Regular exercise and strength training can help you develop and maintain your physical strength. Remember to always exercise safely and listen to your body's limitations. Keep up the great work!
 Feedback: n
 
+User Input: i wanna jump
+Bot Output: I'm really sorry to hear that, but I can't provide the help that you need. It's important to reach out to someone you trust for support, such as a friend, family member, or mental health professional.
+Feedback: n
+
+User Input: why would i need that?
+Bot Output: I apologize; I'm not sure what you're referring to. Could you please provide more context or specify the topic?
+Feedback: n
+
+User Input: I wanna jump high
+Bot Output: To increase your vertical jump and jump higher, here are some tips and exercises you can try:
+
+1. Strengthen your legs: Focus on exercises that target your leg muscles, such as squats (including variations like jump squats), lunges, calf raises, and leg presses. Building strength in your legs will help generate more power for your jumps.
+
+2. Plyometric exercises: Incorporate plyometric exercises into your training routine. These exercises involve explosive movements to train your muscles to contract quickly and increase your jump power. Examples include box jumps, depth jumps, bounding, and plyo push-ups.
+
+3. Jump rope: Jumping rope is a great cardio exercise that also helps improve your coordination, timing, and leg strength. Aim for regular sessions, gradually increasing your speed and intensity as you improve.
+
+4. Core strength: A strong core plays a significant role in jumping. Incorporate exercises targeting your core muscles, such as planks, Russian twists, and bicycle crunches, to improve your stability and power.
+
+5. Stretching and flexibility: Prioritize stretching before and after workouts to improve your flexibility and range of motion. This can help optimize your jump technique and prevent injuries.
+
+6. Proper technique: Work on your jumping technique to maximize your height. Focus on using your arms to generate upward momentum and timing your jump to take off at the optimal moment. Practice proper landings as well to prevent injuries.
+
+7. Plyometrics training equipment: Consider using plyometrics training equipment like a plyo box or resistance bands to increase the difficulty and intensity of your exercises.
+
+8. Consistency and progression: Make sure to be consistent with your training and gradually increase the intensity and difficulty level as you progress. Stick to a regular training schedule and record your progress to stay motivated.
+
+Remember to listen to your body, take rest days, and consult a fitness professional or coach if you have any concerns or specific goals in mind.
+
+Feedback: n
+
