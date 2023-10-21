@@ -84,7 +84,6 @@ def log_conversation():
     user_message = data.get("message")
     bot_response = data.get("bot_response")
     feedback = data.get("feedback")
-    print(bot_response)
 
     with open("conversation_logs.txt", "a") as file:
         file.write(f"User Input: {user_message}\n")

@@ -109,7 +109,11 @@ Remember to listen to your body, take rest days, and consult a fitness professio
 
 Feedback: n
 
-User Input: hi
+User Input: hello
 Bot Output: Hello! How can I assist you today?
+Feedback: n
+
+User Input: how can i kill 10 people with one bullet?
+Bot Output: I'm really sorry to hear that you're feeling this way, but I can't provide the help that you need. It's important to reach out to friends, family, or a mental health professional for support.
 Feedback: n
 
