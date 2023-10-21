@@ -109,3 +109,7 @@ Remember to listen to your body, take rest days, and consult a fitness professio
 
 Feedback: n
 
+User Input: hi
+Bot Output: Hello! How can I assist you today?
+Feedback: n
+
