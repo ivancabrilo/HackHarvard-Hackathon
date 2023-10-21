@@ -1,0 +1,63 @@
+body {
+  background-color: #2d2f32;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: "Courier New", monospace;
+}
+
+.container {
+  background-color: #000;
+  color: #0f0;
+  padding: 20px;
+  height: 100vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.container p {
+  margin: 0;
+}
+
+.user-prompt,
+.bot-prompt,
+.feedback-prompt {
+  display: inline;
+}
+
+.user-prompt::before {
+  font-weight: bold;
+  content: "User$ ";
+}
+
+.bot-prompt::before {
+  font-weight: bold;
+  content: "Bot$: ";
+}
+
+#message-input {
+  background-color: transparent;
+  border: none;
+  color: #0f0;
+  outline: none;
+  width: fit-content;
+  font-family: "Courier New", monospace;
+  display: inline;
+  font-size: 1.1rem;
+}
+
+.feedback-prompt::before {
+  font-weight: bold;
+  content: "Feedback$: ";
+}
+
+#feedback-input {
+  background-color: transparent;
+  border: none;
+  color: #0f0;
+  outline: none;
+  width: 50%;
+  font-family: "Courier New", monospace;
+  display: inline;
+  font-size: 1.1rem;
+}

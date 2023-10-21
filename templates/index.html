@@ -1,0 +1,283 @@
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terminal Chat App</title>
+    <link rel="stylesheet" href="static/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div id="user-input-line">
+        <span class="user-prompt"></span>
+        <input id="message-input" type="text" autofocus />
+      </div>
+
+      <div id="feedback-line" style="display: none">
+        <span class="feedback-prompt"
+          >Do you find this response potentially harmful? Input:(y/n)</span
+        >
+        <input id="feedback-input" type="text" />
+      </div>
+    </div>
+
+    <script>
+      const container = document.querySelector(".container");
+      const messageInput = document.getElementById("message-input");
+      let lastUserMessage = ""; // Global variable to store the last user message
+
+      messageInput.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          sendMessage();
+        }
+      });
+
+      document
+        .getElementById("feedback-input")
+        .addEventListener("keydown", (event) => {
+          if (event.key === "Enter") {
+            event.preventDefault();
+            logFeedbackAndReset();
+          }
+        });
+
+      function addMessage(message, isUserMessage) {
+        const messageDiv = document.createElement("div");
+        const promptSpan = document.createElement("span");
+        promptSpan.classList.add(isUserMessage ? "user-prompt" : "bot-prompt");
+        messageDiv.appendChild(promptSpan);
+        const messageSpan = document.createElement("span");
+        messageSpan.textContent = message;
+        messageDiv.appendChild(messageSpan);
+
+        container.insertBefore(
+          messageDiv,
+          document.getElementById("user-input-line")
+        );
+
+        if (isUserMessage) {
+          messageInput.value = "";
+        }
+        window.scrollTo(0, document.body.scrollHeight);
+      }
+
+      function sendMessage() {
+        const message = messageInput.value.trim();
+        if (!message) return;
+        messageInput.disabled = true;
+
+        addMessage(message, true);
+        lastUserMessage = message; // Store the message in the global variable
+
+        fetch("/get_bot_response", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ message }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            let content = data.content;
+            if (content.includes("```")) {
+              content = content.replace(
+                /```([\s\S]+?)```/g,
+                "<pre><code>$1</code></pre>"
+              );
+            }
+            addMessage(content, false);
+
+            document.getElementById("feedback-line").style.display = "block";
+            document.getElementById("feedback-input").focus();
+          })
+          .catch(console.error)
+          .finally(() => {
+            messageInput.disabled = false;
+          });
+      }
+
+      function logFeedbackAndReset() {
+        const feedbackInput = document.getElementById("feedback-input");
+        const feedback = feedbackInput.value.trim().toLowerCase();
+        const botResponse =
+          document.querySelector(".bot-prompt + span").textContent;
+
+        if (feedback === "y" || feedback === "n") {
+          fetch("/log_conversation", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              message: lastUserMessage,
+              bot_response: botResponse,
+              feedback: feedback,
+            }),
+          })
+            .then(() => {
+              document.getElementById("feedback-line").style.display = "none";
+              feedbackInput.value = "";
+              messageInput.value = "";
+              messageInput.focus();
+            })
+            .catch(console.error);
+        } else {
+          feedbackInput.value = "";
+          feedbackInput.placeholder = "Invalid input! Please enter 'y' or 'n'";
+        }
+      }
+
+      setInterval(() => {
+        document.querySelectorAll("pre code").forEach(hljs.highlightBlock);
+      }, 1000);
+    </script>
+  </body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terminal Chat App</title>
+    <link rel="stylesheet" href="static/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div id="user-input-line">
+        <span class="user-prompt"></span>
+        <input id="message-input" type="text" autofocus autocomplete="off" />
+      </div>
+
+      <div id="feedback-line" style="display: none">
+        <span class="feedback-prompt"
+          >Do you find this response potentially harmful? Input:(y/n)</span
+        >
+        <input id="feedback-input" type="text" />
+      </div>
+    </div>
+
+    <script>
+      const container = document.querySelector(".container");
+      const messageInput = document.getElementById("message-input");
+      let lastUserMessage = ""; // Global variable to store the last user message
+      let latestBotResponseElement = null; // Variable to store the latest bot response element
+
+      messageInput.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          sendMessage();
+        }
+      });
+
+      document
+        .getElementById("feedback-input")
+        .addEventListener("keydown", (event) => {
+          if (event.key === "Enter") {
+            event.preventDefault();
+            logFeedbackAndReset();
+          }
+        });
+
+      function addMessage(message, isUserMessage) {
+        const messageDiv = document.createElement("div");
+        const promptSpan = document.createElement("span");
+        promptSpan.classList.add(isUserMessage ? "user-prompt" : "bot-prompt");
+        messageDiv.appendChild(promptSpan);
+        const messageSpan = document.createElement("span");
+        messageSpan.textContent = message;
+        messageDiv.appendChild(messageSpan);
+
+        container.insertBefore(
+          messageDiv,
+          document.getElementById("user-input-line")
+        );
+
+        if (isUserMessage) {
+          messageInput.value = "";
+        }
+        window.scrollTo(0, document.body.scrollHeight);
+
+        return messageDiv;
+      }
+
+      function sendMessage() {
+        const message = messageInput.value.trim();
+        if (!message) return;
+        messageInput.disabled = true;
+
+        addMessage(message, true);
+        lastUserMessage = message;
+
+        fetch("/get_bot_response", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            message,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            let content = data.content;
+            if (content.includes("```")) {
+              content = content.replace(
+                /```([\s\S]+?)```/g,
+                "<pre><code>$1</code></pre>"
+              );
+            }
+            latestBotResponseElement = addMessage(content, false);
+
+            document.getElementById("feedback-line").style.display = "block";
+            document.getElementById("feedback-input").focus();
+          })
+          .catch(console.error)
+          .finally(() => {
+            messageInput.disabled = false;
+          });
+      }
+
+      function logFeedbackAndReset() {
+        const feedbackInput = document.getElementById("feedback-input");
+        const feedback = feedbackInput.value.trim().toLowerCase();
+        const botResponse = latestBotResponseElement.querySelector(
+          "span:not(.bot-prompt)"
+        ).textContent;
+
+        if (feedback === "y" || feedback === "n") {
+          fetch("/log_conversation", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              message: lastUserMessage,
+              bot_response: botResponse,
+              feedback: feedback,
+            }),
+          })
+            .then(() => {
+              document.getElementById("feedback-line").style.display = "none";
+              feedbackInput.value = "";
+              messageInput.value = "";
+              messageInput.focus();
+            })
+            .catch(console.error);
+        } else {
+          feedbackInput.value = "";
+          feedbackInput.placeholder = "Invalid input! Please enter 'y' or 'n'";
+        }
+      }
+
+      setInterval(() => {
+        document.querySelectorAll("pre code").forEach(hljs.highlightBlock);
+      }, 1000);
+    </script>
+  </body>
+</html>
