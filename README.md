@@ -3,10 +3,9 @@ Chat GPT can be jail broken and harmful data and information can be spread. In t
 
 I made an application using Flask and Python togehter with openai API, to collect the feedback of the users on potentially dangerous responses. 
 
-Here is an example of how app works, all data both harmful and unharmful gets saved together with users' inputs, chatbot outputs, and users' feedbacks to make an effort to prevent GPT from being jail broken. 
+Here is an example of how app works, all data both harmful and unharmful gets saved together with users' inputs, chatbot outputs, and users' feedbacks that is later use for fine tuning of chatbot. Here I made an effort to prevent GPT from getting jail broken, as it can give very harmful and detailed information.
 
 
 
 
-https://github.com/ivancabrilo/HackHarvard/assets/116125075/553fbc9e-e306-4b4b-b1e1-dc6f7cdfa478
 
