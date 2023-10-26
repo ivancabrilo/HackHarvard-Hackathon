@@ -7,5 +7,6 @@ Here is an example of how app works, all data both harmful and unharmful gets sa
 
 
 
+![commonprompt](https://github.com/ivancabrilo/HackHarvard/assets/116125075/6d738c21-9179-43de-bb9a-db89d0622e2a)
 
 
