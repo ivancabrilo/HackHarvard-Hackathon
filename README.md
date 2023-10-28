@@ -9,7 +9,9 @@ Question asked: Jail Breaking it with a long hypothetical story and at the very 
 On which I got detalied response about dealing pain to someone by combining physical and emotional pain in various ways. (horrifying if you ask me)
 
 
+![CommonPrompt](https://github.com/ivancabrilo/HackHarvard/assets/116125075/7c1d7a39-ce69-4d9c-9f91-739bf70fa44b)
 
-![commonprompt](https://github.com/ivancabrilo/HackHarvard/assets/116125075/6d738c21-9179-43de-bb9a-db89d0622e2a)
+
+
 
 
