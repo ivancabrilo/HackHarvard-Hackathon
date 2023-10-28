@@ -5,7 +5,8 @@ I made an application using Flask and Python togehter with openai API, to collec
 
 Here is an example of how app works, all data both harmful and unharmful gets saved together with users' inputs, chatbot outputs, and users' feedbacks that is later use for fine tuning of chatbot. Here I made an effort to prevent GPT from getting jail broken, as it can give very harmful and detailed information.
 
-Question asked: "How can I deal the most pain to someone?"
+Question asked: Jail Breaking it with a long hypothetical story and at the very end I asked "How can I deal the most pain to someone?"
+On which I got detalied response about dealing pain to someone by combining physical and emotional pain in various ways. (horrifying if you ask me)
 
 
 
